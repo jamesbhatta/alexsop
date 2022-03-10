@@ -28,14 +28,13 @@
                     <h2 class="text-sm font-medium line-clamp-2" :title="product.title">{{product.title}}</h2>
                     <div class="my-2">{{product.price_range}}</div>
                     <div>
-                      <a :href="'https://wa.me/9779865720910?text=' + product.title" class="py-2 px-4 block rounded bg-green-500 text-white text-sm">
-                      WhatsApp Web
-                      </a>
-                      <div class="my-3">
-                      <a :href="'https://web.whatsapp.com/9779865720910?text=' + product.title" class="py-2 px-4 block rounded bg-green-500 text-white text-sm">
-                        Chat on App
-                        </a>
-                    </div>
+                      <a :href="'https://wa.me/9779865720910?text=' + product.title" class="py-2 px-4 block rounded bg-green-500 text-white text-sm">Chat on App</a>
+                        <div class="my-3">
+                            <a :href="'https://web.whatsapp.com/9779865720910?text=' + product.title" class="py-2 px-4 block rounded bg-green-500 text-white text-sm">WhatsApp Web</a>
+                        </div>
+                        <div class="my-3">
+                                <a :href="'whatsapp://send?abid=9779865720910&text=' + product.title" class="py-2 px-4 block rounded bg-green-500 text-white text-sm">Open App</a>
+                        </div>
                   </div>
                 </div>
             </div>
