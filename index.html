@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexsop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="max-w-3xl mx-auto p-4">
+            <h1 class="text-2xl mb-3">Products</h1>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-5 lg:gap-8 xl:gap-10">
+                <div v-for="product in products" :key="product.id">
+                  <div class="aspect-square mb-1">
+                    <img
+                      class="h-full w-full object-cover rounded-lg"
+                      src="https://cdn.shopify.com/s/files/1/0263/0067/8228/products/2_ceadb93a-f2c8-43e2-9e91-a99b7fbc1973_1024x1024.jpg"
+                    />
+                  </div>
+                  <div class="px-3">
+                    <h2 class="text-sm font-medium line-clamp-2" :title="product.title">{{product.title}}</h2>
+                    <div class="my-2">{{product.price_range}}</div>
+                    <div>
+                      <a :href="'https://wa.me/9779865720910?text=' + product.title" class="py-2 px-4 block rounded bg-green-500 text-white text-sm">
+                      WhatsApp Web
+                      </a>
+                      <div class="my-3">
+                      <a :href="'https://web.whatsapp.com/9779865720910?text=' + product.title" class="py-2 px-4 block rounded bg-green-500 text-white text-sm">
+                        Chat on App
+                        </a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    products: []
+                }
+            },
+            created()
+            {
+                axios.get('https://sellercenter.sastowholesale.com/api/products')
+                .then(response => {
+                    this.products = response.data.data
+                })
+                .then(error => console.log(error));
+            }
+          })
+    </script>
+</body>
+</html>
